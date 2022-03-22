@@ -15,6 +15,9 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var umidityLabel: UILabel!
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var thermometerLabel: UILabel!
     
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
@@ -73,6 +76,10 @@ extension WeatherViewController: WeatherManagerDelegate {
             self.temperatureLabel.text = weather.temperatureString
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
+            
+            self.umidityLabel.text = "\(weather.humidity)%"
+            self.speedLabel.text = "\(weather.speed)Km"
+            self.thermometerLabel.text = "\(weather.feels_like)ºc"
         }
     }
     
