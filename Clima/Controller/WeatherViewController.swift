@@ -19,6 +19,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var thermometerLabel: UILabel!
     
+    
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
@@ -73,7 +74,7 @@ extension WeatherViewController: WeatherManagerDelegate {
     
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
         DispatchQueue.main.async {
-            self.temperatureLabel.text = weather.temperatureString
+            self.temperatureLabel.text = "\(weather.temperatureString)ºc"
             self.conditionImageView.image = UIImage(systemName: weather.conditionName)
             self.cityLabel.text = weather.cityName
             
