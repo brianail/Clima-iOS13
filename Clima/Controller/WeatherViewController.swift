@@ -11,6 +11,7 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var conditionImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
@@ -19,12 +20,13 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var speedLabel: UILabel!
     @IBOutlet weak var thermometerLabel: UILabel!
     
-    
     var weatherManager = WeatherManager()
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.cardView.roundCorner(cornerRadiuns: 50.0, typeCorners: [.inferiorDireito,.inferiorEsquerdo,.superiorDireito,.superiorEsquerdo])
+        
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
@@ -33,8 +35,8 @@ class WeatherViewController: UIViewController {
         weatherManager.delegate = self
         searchTextField.delegate = self
     }
-
 }
+
 
 //MARK: - UITextFieldDelegate
 extension WeatherViewController: UITextFieldDelegate {
@@ -109,5 +111,21 @@ extension WeatherViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+}
+
+//MARK: - CornerRadiusView
+extension UIView {
+    func roundCorner(cornerRadiuns: CGFloat, typeCorners:CACornerMask) {
+        self.layer.cornerRadius = cornerRadiuns
+        self.layer.maskedCorners = typeCorners
+        self.clipsToBounds = true
+    }
+}
+
+extension CACornerMask {
+    static public let inferiorDireito: CACornerMask = .layerMaxXMaxYCorner
+    static public let inferiorEsquerdo: CACornerMask = .layerMinXMaxYCorner
+    static public let superiorDireito: CACornerMask = .layerMaxXMinYCorner
+    static public let superiorEsquerdo: CACornerMask = .layerMinXMinYCorner
 }
 

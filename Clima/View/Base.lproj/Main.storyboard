@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_0" orientation="portrait" appearance="dark"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -45,6 +45,7 @@
                                                 <rect key="frame" x="50" y="0.0" width="250" height="40"/>
                                                 <color key="backgroundColor" white="1" alpha="0.28249172185430466" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" name="weatherColor"/>
+                                                <color key="textColor" name="cardColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
@@ -64,7 +65,7 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZjJ-43-TB9">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZjJ-43-TB9" userLabel="CardView" customClass="CardView">
                                         <rect key="frame" x="0.0" y="50" width="350" height="340"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="qMu-UP-csF">
@@ -158,7 +159,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.48769422936472567" green="0.49252288510101006" blue="0.49252288510101006" alpha="0.50421668046357615" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="cardColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="350" id="2uk-4S-9Yj"/>
                                             <constraint firstAttribute="height" constant="340" id="C7V-2l-QzP"/>
@@ -198,6 +199,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cardView" destination="ZjJ-43-TB9" id="feX-Iv-u4a"/>
                         <outlet property="cityLabel" destination="5Mt-yA-ZCv" id="CJ6-ah-wbw"/>
                         <outlet property="conditionImageView" destination="MEE-tZ-LEQ" id="v7x-67-er4"/>
                         <outlet property="searchTextField" destination="2eh-wL-W34" id="sX6-83-jaC"/>
@@ -220,6 +222,9 @@
         <image name="sun.max" catalog="system" width="128" height="124"/>
         <image name="thermometer" catalog="system" width="81" height="128"/>
         <image name="wind" catalog="system" width="128" height="103"/>
+        <namedColor name="cardColor">
+            <color red="0.77712431059999998" green="0.90571424199999995" blue="0.92304200839999995" alpha="0.58653249169999999" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="weatherColor">
             <color red="0.11800000071525574" green="0.20800000429153442" blue="0.22400000691413879" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
